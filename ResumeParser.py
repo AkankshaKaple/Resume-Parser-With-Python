@@ -10,7 +10,7 @@ class ResumeParser:
 
     def __init__(self, path):
         self.nlp = spacy.load('en')
-        self.only_files = [f for f in listdir(path) if isfile(join(myPath, f))]
+        self.path = path
 
     def getName(self, input_string):
         """
@@ -49,8 +49,8 @@ class ResumeParser:
         name = []
         email = []
         phone_no = []
-
-        for file_name in self.only_files:
+        only_files = [f for f in listdir(self.path) if isfile(join(myPath, f))]
+        for file_name in only_files:
             try:
                 input_string = textract.process(myPath + file_name).decode("utf-8").strip()
                 phone_no.append(self.getPhoneNumber(input_string))
