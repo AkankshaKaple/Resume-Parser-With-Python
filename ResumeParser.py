@@ -41,9 +41,9 @@ class ResumeParser:
         regex_for_phone_no = r"\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}"
         return re.findall(regex_for_phone_no, input_string)
 
-    def getCSV(self):
+    def save_details_to_CSV(self):
         """
-        Function to get read all the Resumes, extract name, email_id and phone number from it,
+        Function to read all the Resumes, extract name, email_id and phone number from it,
         and store it in CSV file
         """
         name = []
@@ -67,5 +67,5 @@ class ResumeParser:
 if __name__ == '__main__':
     myPath = "/home/bridgelabz/BridgeLabz/Resume-Parser/Resumes/"
     rp = ResumeParser(myPath)
-    rp.getCSV()
+    rp.save_details_to_CSV()
     print("Done")
